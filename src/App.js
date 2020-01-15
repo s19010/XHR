@@ -1,17 +1,28 @@
 import React from 'react'
 
-const Test = props => {
-  const comment = 'Hello'
-  return <h1>{comment}</h1>
-}
+const Greeting = props => <li>{props.type}</li>
 
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { data: [] }
   }
+
   render () {
-    return <Test />
+    const greetings = this.state.data.map((v, i) => (
+      <Greeting type={v} key={i} />
+    ))
+
+    return <ul>{greetings}</ul>
+  }
+
+  // render() が走った後に読み込まれる。
+  componentDidMount () {
+    fetch('./messages.json')
+      .then(res => res.json())
+      .then(json => json.messages)
+      .then(json => this.setState({ data: json }))
   }
 }
+
 export default App
