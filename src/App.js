@@ -16,7 +16,6 @@ class App extends React.Component {
     return <ul>{greetings}</ul>
   }
 
-  // render() が走った後に読み込まれる。
   componentDidMount () {
     fetch('./messages.json')
       .then(res => res.json())
