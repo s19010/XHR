@@ -13,7 +13,9 @@ class MultiForm extends React.Component {
   }
 
   doChange (e) {
-    this.setState({ value: e.target.name })
+    const userValue = e.target.value
+    const key = e.target.name
+    this.setState({ [key]: userValue })
   }
 
   doSubmit (e) {
