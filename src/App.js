@@ -8,12 +8,12 @@ class MultiForm extends React.Component {
       age: 22,
       hobby: '読書'
     }
+    this.doSubmit = this.doSubmit.bind(this)
+    this.doChange = this.doChange.bind(this)
   }
 
   doChange (e) {
-    const userValue = e.target.value
-    const key = e.target.name
-    this.setState({ [key]: userValue })
+    this.setState({ value: e.target.name })
   }
 
   doSubmit (e) {
@@ -23,41 +23,24 @@ class MultiForm extends React.Component {
   }
 
   render () {
-    const doSubmit = e => this.doSubmit(e)
-    const doChange = e => this.doChange(e)
     return (
-      <form onSubmit={doSubmit}>
+      <form action='' onSubmit={this.doSubmit}>
         <div>
           <label>
             名前: <br />
-            <input
-              name='name'
-              type='text'
-              value={this.state.name}
-              onChange={doChange}
-            />
+            <input name='name' type='text' onChange={this.doChange} />
           </label>
         </div>
         <div>
           <label>
             年齢: <br />
-            <input
-              name='age'
-              type='number'
-              value={this.state.age}
-              onChange={doChange}
-            />
+            <input name='age' type='number' onChange={this.doChange} />
           </label>
         </div>
         <div>
           <label>
             趣味: <br />
-            <input
-              name='hobby'
-              type='text'
-              value={this.state.hobby}
-              onChange={doChange}
-            />
+            <input name='hobby' type='text' onChange={this.doChange} />
           </label>
         </div>
         <input type='submit' value='送信' />
@@ -67,17 +50,18 @@ class MultiForm extends React.Component {
 }
 
 class App extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = { value: ''}
-    }
+  constructor (props) {
+    super(props)
+    this.state = { value: '' }
+  }
 
-render () {
+  render () {
     return (
-        <div>
-            <MultiForm />
-        </div>
+      <div>
+        <MultiForm />
+      </div>
     )
+  }
 }
 
 export default App
