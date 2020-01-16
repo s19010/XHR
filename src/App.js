@@ -1,10 +1,5 @@
 import React from 'react'
 
-/*const TestView = props => {
-  <div>{props.value}</div>
-}
-*/
-
 class TestForm extends React.Component {
   constructor (props) {
     super(props)
@@ -41,7 +36,6 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        {/*<TestView value={this.state.value} />*/}
         <TestForm />
       </div>
     )
