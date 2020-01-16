@@ -1,27 +1,56 @@
 import React from 'react'
 
-const Greeting = props => <li>{props.type}</li>
-
 class App extends React.Component {
-  constructor (props) {
+  costructor (props) {
     super(props)
-    this.state = { data: [] }
+    this.state = {
+      name: 'クジラ',
+      age: '22',
+      hobby: '読書'
+    }
   }
 
-  render () {
-    const greetings = this.state.data.map((v, i) => (
-      <Greeting type={v} key={i} />
-    ))
+doChange (e) {
+    const userValue = e.target.value
+    const key = e.target.name
+    this.setState({[key]: userValue})
+}
 
-    return <ul>{greetings}</ul>
-  }
+doSubmit (e) {
+    e.preventDefault()
+    const j = JSON.stringify(this.state)
+    window.alert(j)
+}
 
-  componentDidMount () {
-    fetch('./messages.json')
-      .then(res => res.json())
-      .then(json => json.messages)
-      .then(json => this.setState({ data: json }))
-  }
+render () {
+    const doSubmit = (e) => this.doSubmit(e)
+    const doChange = (e) => this.doChange(e)
+    return (
+        <form onSubmit={doSubmit}>
+            <div><label>
+                名前: <br />
+                <input name='name'
+                    type='text'
+                    value={this.state.name}
+                    onChange={doChange} />
+                </label></div>
+                <div><label>
+                    年齢: <br />
+                    <input name='age'
+                        type='number'
+                        value={this.state.name}
+                        onChange={doChange} />
+                 </label></div>
+                 <div><label>
+                    趣味: <br />
+                        <input name='hobby'
+                            type='text'
+                            value={this.state.hobby}
+                            onChange={doChange} />
+                        </label></div>
+                        <input type='submit' value='送信' />
+                    </form>
+    )
 }
 
 export default App
