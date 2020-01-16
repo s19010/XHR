@@ -1,6 +1,6 @@
 import React from 'react'
 
-class TestForm extends React.Component {
+class SimpleForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = { value: '' }
@@ -36,7 +36,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <TestForm />
+        <SimpleForm />
       </div>
     )
   }
