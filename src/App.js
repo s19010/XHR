@@ -30,19 +30,34 @@ class MultiForm extends React.Component {
         <div>
           <label>
             名前: <br />
-            <input name='name' type='text' onChange={this.doChange} />
+            <input
+              name='name'
+              type='text'
+              value={this.state.name}
+              onChange={this.doChange}
+            />
           </label>
         </div>
         <div>
           <label>
             年齢: <br />
-            <input name='age' type='number' onChange={this.doChange} />
+            <input
+              name='age'
+              type='number'
+              value={this.state.age}
+              onChange={this.doChange}
+            />
           </label>
         </div>
         <div>
           <label>
             趣味: <br />
-            <input name='hobby' type='text' onChange={this.doChange} />
+            <input
+              name='hobby'
+              type='text'
+              value={this.state.hobby}
+              onChange={this.doChange}
+            />
           </label>
         </div>
         <input type='submit' value='送信' />
