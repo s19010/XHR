@@ -8,9 +8,11 @@ class InchToCm extends React.Component {
       inch: 0,
       cm: 0
     }
+    this.inchChanged = this.inchChanged.bind(this)
+    this.cmChanged = this.cmChanged.bind(this)
   }
 
-  InchChanged (e) {
+  inchChanged (e) {
     const inchValue = e.value
     const cmValue = inchValue * 2.54
     this.setState({
