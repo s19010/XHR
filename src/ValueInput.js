@@ -19,6 +19,7 @@ export default class ValueInput extends React.Component {
       })
     }
   }
+
   componentWillReceiveProps (nextProps) {
     this.setState({ value: nextProps.value })
   }
