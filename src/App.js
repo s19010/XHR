@@ -1,52 +1,47 @@
 import React from 'react'
+import ValueInput from './ValueInput'
 
-class MultiForm extends React.Component {
+class InchToCm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: 'クジラ',
-      age: 22,
-      hobby: '読書'
+      inch: 0,
+      cm: 0
     }
-    this.doSubmit = this.doSubmit.bind(this)
-    this.doChange = this.doChange.bind(this)
   }
 
-  doChange (e) {
-    const userValue = e.target.value
-    const key = e.target.name
-    this.setState({ [key]: userValue })
+  InchChanged (e) {
+    const inchValue = e.value
+    const cmValue = inchValue * 2.54
+    this.setState({
+      inch: inchValue,
+      cm: cmValue
+    })
   }
 
-  doSubmit (e) {
-    e.preventDefault()
-    const j = JSON.stringify(this.state)
-    window.alert(j)
+  cmChanged (e) {
+    const cmValue = e.value
+    const inchValue = cmValue / 2.54
+    this.setState({
+      inch: inchValue,
+      cm: cmValue
+    })
   }
 
   render () {
     return (
-      <form action='' onSubmit={this.doSubmit}>
-        <div>
-          <label>
-            名前: <br />
-            <input name='name' type='text' onChange={this.doChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            年齢: <br />
-            <input name='age' type='number' onChange={this.doChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            趣味: <br />
-            <input name='hobby' type='text' onChange={this.doChange} />
-          </label>
-        </div>
-        <input type='submit' value='送信' />
-      </form>
+      <div>
+        <ValueInput
+          title='inch'
+          onChange={e => this.inchChanged(e)}
+          value={this.state.inch}
+        />
+        <ValueInput
+          title='cm'
+          onChange={e => this.cmChanged(e)}
+          value={this.state.cm}
+        />
+      </div>
     )
   }
 }
@@ -60,7 +55,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <MultiForm />
+        <InchToCm />
       </div>
     )
   }
